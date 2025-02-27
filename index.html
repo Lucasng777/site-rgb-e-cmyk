@@ -1,0 +1,336 @@
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RGB vs CMYK: Guia Completo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>RGB e CMYK: Um Guia Completo sobre Sistemas de Cores</h1>
+        <p class="header-subtitle">Entenda como as cores são formadas em telas e impressões</p>
+    </header>
+
+    <main>
+        <section class="introduction">
+            <h2>Introdução aos Sistemas de Cores</h2>
+            <div class="topic">
+                <p>No mundo moderno, existem duas principais maneiras de criar cores: através da luz (RGB) e através de pigmentos (CMYK). Cada sistema tem seu propósito específico e é fundamental entender suas diferenças para trabalhar efetivamente com cores digitais e impressas.</p>
+                <ul class="key-points">
+                    <li>RGB: Sistema baseado em luz, usado em dispositivos eletrônicos</li>
+                    <li>CMYK: Sistema baseado em pigmentos, usado em impressão</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="rgb-section">
+            <h2>Sistema RGB</h2>
+            
+            <div class="topic">
+                <h3>O que é RGB?</h3>
+                <p>RGB é um sistema de cores aditivas baseado em luz, usado em dispositivos eletrônicos. Quando combinamos diferentes intensidades de luz das três cores primárias, podemos criar praticamente qualquer cor visível:</p>
+                <ul>
+                    <li>R (Red) - Vermelho</li>
+                    <li>G (Green) - Verde</li>
+                    <li>B (Blue) - Azul</li>
+                </ul>
+            </div>
+
+            <div class="topic">
+                <h3>Funcionamento dos Pixels</h3>
+                <p>Em uma tela digital, cada pixel é composto por três subpixels: um vermelho, um verde e um azul. A intensidade de luz emitida por cada subpixel determina a cor final que vemos:</p>
+                
+                <div class="pixel-demo">
+                    <div class="pixel-enlarged">
+                        <svg viewBox="0 0 300 100">
+                            <rect x="10" y="10" width="280" height="80" fill="#333" rx="5"/>
+                            <rect class="red-pixel" x="20" y="20" width="80" height="60" fill="rgb(255,0,0)" opacity="0.7"/>
+                            <rect class="green-pixel" x="110" y="20" width="80" height="60" fill="rgb(0,255,0)" opacity="0.7"/>
+                            <rect class="blue-pixel" x="200" y="20" width="80" height="60" fill="rgb(0,0,255)" opacity="0.7"/>
+                            <text x="55" y="95" fill="#333" font-size="12">R</text>
+                            <text x="145" y="95" fill="#333" font-size="12">G</text>
+                            <text x="235" y="95" fill="#333" font-size="12">B</text>
+                        </svg>
+                    </div>
+                    <p class="pixel-explanation">Experimente ajustar a intensidade de cada subpixel para ver como a cor final é formada:</p>
+                    <div class="pixel-grid" id="pixelGrid"></div>
+                    <div class="color-controls">
+                        <div class="color-slider">
+                            <label>Vermelho (R): <span id="redValue">0</span></label>
+                            <input type="range" id="redSlider" min="0" max="255" value="0">
+                            <p class="slider-explanation">Controla a intensidade do subpixel vermelho (0-255)</p>
+                        </div>
+                        <div class="color-slider">
+                            <label>Verde (G): <span id="greenValue">0</span></label>
+                            <input type="range" id="greenSlider" min="0" max="255" value="0">
+                            <p class="slider-explanation">Controla a intensidade do subpixel verde (0-255)</p>
+                        </div>
+                        <div class="color-slider">
+                            <label>Azul (B): <span id="blueValue">0</span></label>
+                            <input type="range" id="blueSlider" min="0" max="255" value="0">
+                            <p class="slider-explanation">Controla a intensidade do subpixel azul (0-255)</p>
+                        </div>
+                    </div>
+                </div>
+                <ul class="pixel-facts">
+                    <li>Cada subpixel pode ter uma intensidade de 0 (desligado) até 255 (brilho máximo)</li>
+                    <li>A combinação dos três subpixels em intensidade máxima (255,255,255) resulta em branco</li>
+                    <li>Quando todos os subpixels estão desligados (0,0,0), vemos preto</li>
+                    <li>Diferentes intensidades de cada subpixel criam milhões de cores possíveis</li>
+                </ul>
+            </div>
+
+            <div class="topic">
+                <h3>Como Funciona</h3>
+                <div class="color-demo rgb-demo">
+                    <div class="rgb-interactive">
+                        <svg viewBox="0 0 400 200">
+                            <!-- Círculos de cores primárias -->
+                            <circle class="color-circle red" cx="150" cy="100" r="70" fill="rgba(255,0,0,0.7)"/>
+                            <circle class="color-circle green" cx="250" cy="100" r="70" fill="rgba(0,255,0,0.7)"/>
+                            <circle class="color-circle blue" cx="200" cy="170" r="70" fill="rgba(0,0,255,0.7)"/>
+                            
+                            <!-- Áreas de sobreposição -->
+                            <circle class="mix-point rg" cx="200" cy="100" r="20" fill="rgba(255,255,0,0.7)"/>
+                            <circle class="mix-point rb" cx="175" cy="135" r="20" fill="rgba(255,0,255,0.7)"/>
+                            <circle class="mix-point gb" cx="225" cy="135" r="20" fill="rgba(0,255,255,0.7)"/>
+                            <circle class="mix-point rgb" cx="200" cy="135" r="20" fill="rgba(255,255,255,0.7)"/>
+                        </svg>
+                    </div>
+                    <div class="pixel-demo">
+                        <div class="pixel-grid" id="pixelGrid2"></div>
+                        <div class="color-controls">
+                            <div class="color-slider">
+                                <label>R: <span id="redValue2">0</span></label>
+                                <input type="range" id="redSlider2" min="0" max="255" value="0">
+                            </div>
+                            <div class="color-slider">
+                                <label>G: <span id="greenValue2">0</span></label>
+                                <input type="range" id="greenSlider2" min="0" max="255" value="0">
+                            </div>
+                            <div class="color-slider">
+                                <label>B: <span id="blueValue2">0</span></label>
+                                <input type="range" id="blueSlider2" min="0" max="255" value="0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p>O sistema RGB funciona através da adição de luz:</p>
+                <ul>
+                    <li>Quando combinamos vermelho e verde, obtemos amarelo</li>
+                    <li>Vermelho e azul formam magenta</li>
+                    <li>Verde e azul criam ciano</li>
+                    <li>As três cores juntas em intensidade máxima formam o branco</li>
+                    <li>A ausência de todas as cores resulta em preto</li>
+                </ul>
+            </div>
+
+            <div class="topic">
+                <h3>Aplicações do RGB</h3>
+                <ul>
+                    <li>Monitores de computador</li>
+                    <li>Smartphones e tablets</li>
+                    <li>Televisores</li>
+                    <li>Câmeras digitais</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="cmyk-section">
+            <h2>Sistema CMYK</h2>
+            
+            <div class="topic">
+                <h3>O que é CMYK?</h3>
+                <p>CMYK é um sistema de cores subtrativas baseado em pigmentos, usado principalmente em impressão. Diferente do RGB que adiciona luz, o CMYK funciona subtraindo luz através de pigmentos que absorvem determinados comprimentos de onda:</p>
+                <ul>
+                    <li>C (Cyan) - Ciano: absorve a luz vermelha</li>
+                    <li>M (Magenta) - Magenta: absorve a luz verde</li>
+                    <li>Y (Yellow) - Amarelo: absorve a luz azul</li>
+                    <li>K (Key/Black) - Preto: absorve todas as cores</li>
+                </ul>
+            </div>
+
+            <div class="topic">
+                <h3>Como Funciona</h3>
+                <div class="color-demo cmyk-demo">
+                    <div class="cmyk-interactive">
+                        <svg viewBox="0 0 400 300">
+                            <!-- Base white paper -->
+                            <rect x="0" y="0" width="400" height="300" fill="#ffffff"/>
+                            
+                            <!-- CMYK circles -->
+                            <circle class="color-circle cyan" cx="160" cy="120" r="80" fill="rgba(0,255,255,0.5)"/>
+                            <circle class="color-circle magenta" cx="240" cy="120" r="80" fill="rgba(255,0,255,0.5)"/>
+                            <circle class="color-circle yellow" cx="200" cy="180" r="80" fill="rgba(255,255,0,0.5)"/>
+                            
+                            <!-- Black square -->
+                            <rect class="black-overlay" x="150" y="110" width="100" height="100" fill="rgba(0,0,0,0.8)"/>
+                            
+                            <!-- Labels -->
+                            <text x="130" y="80" fill="#000">Ciano</text>
+                            <text x="250" y="80" fill="#000">Magenta</text>
+                            <text x="190" y="280" fill="#000">Amarelo</text>
+                            <text x="190" y="160" fill="#fff">Preto (K)</text>
+                        </svg>
+                    </div>
+                </div>
+                <div class="cmyk-explanation">
+                    <h4>Processo de Impressão CMYK</h4>
+                    <ul>
+                        <li>Começa com papel branco que reflete todas as cores</li>
+                        <li>Cada tinta age como um filtro, subtraindo certas cores da luz refletida</li>
+                        <li>As tintas são aplicadas em camadas, criando diferentes cores pela sobreposição</li>
+                        <li>O preto (K) é usado para:</li>
+                    </ul>
+                    <div class="black-usage">
+                        <div class="black-reason">
+                            <h5>Economia</h5>
+                            <p>Reduz o uso de tintas coloridas para criar tons escuros</p>
+                        </div>
+                        <div class="black-reason">
+                            <h5>Contraste</h5>
+                            <p>Proporciona tons mais profundos que a mistura CMY</p>
+                        </div>
+                        <div class="black-reason">
+                            <h5>Texto</h5>
+                            <p>Garante nitidez em textos e linhas finas</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="topic">
+                <h3>Aplicações do CMYK</h3>
+                <ul>
+                    <li>Impressão offset</li>
+                    <li>Impressoras domésticas</li>
+                    <li>Materiais gráficos impressos</li>
+                    <li>Revistas e jornais</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="comparison">
+            <h2>RGB vs CMYK: Análise Comparativa</h2>
+            <div class="topic">
+                <p>Cada sistema de cores tem suas características únicas que os tornam ideais para diferentes aplicações. Entenda as principais diferenças:</p>
+                <table>
+                    <tr>
+                        <th>Característica</th>
+                        <th>RGB</th>
+                        <th>CMYK</th>
+                    </tr>
+                    <tr>
+                        <td>Base do sistema</td>
+                        <td>Luz (aditivo)</td>
+                        <td>Pigmento (subtrativo)</td>
+                    </tr>
+                    <tr>
+                        <td>Cor inicial</td>
+                        <td>Preto (ausência de luz)</td>
+                        <td>Branco (papel)</td>
+                    </tr>
+                    <tr>
+                        <td>Gama de cores</td>
+                        <td>Maior variedade de cores vivas</td>
+                        <td>Cores mais suaves e opacas</td>
+                    </tr>
+                    <tr>
+                        <td>Uso principal</td>
+                        <td>Dispositivos eletrônicos</td>
+                        <td>Material impresso</td>
+                    </tr>
+                    <tr>
+                        <td>Custo</td>
+                        <td>Sem custo adicional por cor</td>
+                        <td>Custo por tinta utilizada</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Guia educativo sobre os sistemas de cores RGB e CMYK</p>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Criar grade de pixels
+        const pixelGrid = document.getElementById('pixelGrid');
+        const pixelGrid2 = document.getElementById('pixelGrid2');
+        const gridSize = 8;
+        
+        for (let i = 0; i < gridSize * gridSize; i++) {
+            const pixel = document.createElement('div');
+            pixel.className = 'pixel';
+            pixelGrid.appendChild(pixel);
+        }
+
+        for (let i = 0; i < gridSize * gridSize; i++) {
+            const pixel = document.createElement('div');
+            pixel.className = 'pixel';
+            pixelGrid2.appendChild(pixel);
+        }
+
+        // Controles de cor
+        const redSlider = document.getElementById('redSlider');
+        const greenSlider = document.getElementById('greenSlider');
+        const blueSlider = document.getElementById('blueSlider');
+        const redValue = document.getElementById('redValue');
+        const greenValue = document.getElementById('greenValue');
+        const blueValue = document.getElementById('blueValue');
+        
+        const redSlider2 = document.getElementById('redSlider2');
+        const greenSlider2 = document.getElementById('greenSlider2');
+        const blueSlider2 = document.getElementById('blueSlider2');
+        const redValue2 = document.getElementById('redValue2');
+        const greenValue2 = document.getElementById('greenValue2');
+        const blueValue2 = document.getElementById('blueValue2');
+
+        function updateColor() {
+            const r = redSlider.value;
+            const g = greenSlider.value;
+            const b = blueSlider.value;
+            
+            redValue.textContent = r;
+            greenValue.textContent = g;
+            blueValue.textContent = b;
+
+            const pixels = document.querySelectorAll('.pixel');
+            pixels.forEach(pixel => {
+                pixel.style.backgroundColor = `rgb(${r},${g},${b})`;
+            });
+        }
+
+        function updateColor2() {
+            const r = redSlider2.value;
+            const g = greenSlider2.value;
+            const b = blueSlider2.value;
+            
+            redValue2.textContent = r;
+            greenValue2.textContent = g;
+            blueValue2.textContent = b;
+
+            const pixels = document.querySelectorAll('.pixel');
+            pixels.forEach((pixel, index) => {
+                if(index >= gridSize * gridSize) {
+                    pixel.style.backgroundColor = `rgb(${r},${g},${b})`;
+                }
+            });
+        }
+
+        redSlider.addEventListener('input', updateColor);
+        greenSlider.addEventListener('input', updateColor);
+        blueSlider.addEventListener('input', updateColor);
+
+        redSlider2.addEventListener('input', updateColor2);
+        greenSlider2.addEventListener('input', updateColor2);
+        blueSlider2.addEventListener('input', updateColor2);
+
+        updateColor();
+        updateColor2();
+    });
+    </script>
+</body>
+</html>
